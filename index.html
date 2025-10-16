@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Finance Tracker</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Student Finance Tracker</h1>
+        <nav aria-label="Main navigation" class="dropdown-nav">
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                <span class="menu-icon">☰</span>
+                <span class="menu-text">Menu</span>
+            </button>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme" aria-pressed="false">🌙</button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="none"><a href="#" data-page="dashboard" role="menuitem" aria-current="page">Dashboard</a></li>
+                <li role="none"><a href="#" data-page="about" role="menuitem">About</a></li>
+                <li role="none"><a href="#" data-page="form" role="menuitem">Add Transaction</a></li>
+                <li role="none"><a href="#" data-page="transactions" role="menuitem">All Transactions</a></li>
+                <li role="none"><a href="#" data-page="settings" role="menuitem">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="about-section" class="page-section">
+            <h2>About This Applicaton</h2>
+            
+            <div class="about-content">
+                <p>Welcome to the Student Finance Tracker; a simple, intuitive tool designed to help students take control of their money. Whether you're budgeting for stationery, tracking part-time income, or saving for something big, this app keeps your finances organized and stress-free.</p>
+                
+                <div class="feature-highlight">
+                    <h3>Features</h3>
+                <ul>
+                    <li>Track expenses with categories and descriptions</li>
+                    <li>Advanced regex search capabilities</li>
+                    <li>Budget management with visual progress indicators</li>
+                    <li>Responsive design that works on all devices</li>
+                    <li>Data import/export functionality</li>
+                    <li>Full keyboard navigation support and more</li>
+                </ul>
+                </div>
+                
+                <h3>Why It Exists</h3>
+                <p>Managing money as a student can be overwhelming. As a result, this tracker makes it easier by offering a clean interface, smart stats, and quick entry forms; so you can focus more on learning and less on spreadsheets.</p>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Built by Brian Nakuwa</p>
+                <p>Email: <a href="mailto:b.nakuwa@alustudent.com">b.nakuwa@alustudent.com</a></p>
+                <p>GitHub: <a href="https://github.com/nakuwa23" target="_blank" rel="noopener noreferrer">github.com/nakuwa23</a></p>
+            </div>
+        </section>
+
+
+        <section id="dashboard-section" class="page-section active" aria-labelledby="dashboard-heading">
+            <h2 id="dashboard-heading">Financial Dashboard</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Transactions</h3>
+                    <p id="total-transactions" class="stat-number">0</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Total Spent</h3>
+                    <p id="total-amount" class="stat-number">$0.00</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Top Category</h3>
+                    <p id="top-category" class="stat-number">-</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Last 7 Days</h3>
+                    <p id="last-week-total" class="stat-number">$0.00</p>
+                </div>
+            </div>
+            
+            <div class="budget-section">
+                <h3>Monthly Budget</h3>
+                <div class="budget-input">
+                    <label for="monthly-budget">Monthly Budget ($):</label>
+                    <input type="number" id="monthly-budget" min="0" step="0.01" placeholder="Set your budget">
+                    <button id="set-budget">Set Budget</button>
+                </div>
+                
+                <div id="budget-display" class="budget-display" hidden>
+                    <div class="budget-bar">
+                        <div id="budget-progress" class="budget-progress"></div>
+                    </div>
+                    <div class="budget-info">
+                        <span id="budget-text">Spent $0 of $0</span>
+                        <span id="budget-balance" class="budget-balance" aria-live="polite"></span>
+                        <span id="budget-status" aria-live="polite"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-section">
+                <h3>Spending Trend (Last 7 Days)</h3>
+                <div id="trend-chart" class="trend-chart"></div>
+            </div>
+        </section>
+
+
+        <section id="form-section" class="page-section" aria-labelledby="form-heading">
+            <h2 id="form-heading">Add New Transaction</h2>
+            
+            <form id="transaction-form" novalidate>
+                <div class="form-fields">
+                    <label for="description">Description *</label>
+                    <input type="text" id="description" name="description" required 
+                           aria-describedby="description-error">
+                    <div id="description-error" class="error-message" aria-live="polite"></div>
+                </div>
+        
+                <div class="form-fields">
+                    <label for="amount">Amount ($) *</label>
+                    <input type="number" id="amount" name="amount" step="0.01" min="0" required
+                           aria-describedby="amount-error">
+                        <span id="budget-status" aria-live="polite"></span>
+                        <span id="budget-alert" aria-live="assertive" class="sr-only"></span>
+                </div>
+        
+                <div class="form-fields">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required aria-describedby="category-error">
+                        <option value="">Select a category</option>
+                        <option value="Food">Food</option>
+                        <option value="Books">Stationery</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Fees">Fees</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div id="category-error" class="error-message" aria-live="polite"></div>
+                </div>
+        
+                <div class="form-fields">
+                    <label for="date">Date *</label>
+                    <input type="date" id="date" name="date" required
+                           aria-describedby="date-error">
+                    <div id="date-error" class="error-message" aria-live="polite"></div>
+                </div>
+        
+                <button type="submit" id="submit-btn">Add Transaction</button>
+                
+                <div id="form-status" class="form-status" aria-live="polite"></div>
+            </form>
+        </section>
+        
+
+        <section id="transactions-section" class="page-section" aria-labelledby="transactions-heading">
+            <h2 id="transactions-heading">All Transactions</h2>
+            
+            <div class="search-container">
+                <label for="search-input" class="sr-only">Search transactions</label>
+                <input type="text" id="search-input" placeholder="Search with regex pattern (e.g., /coffee/i, /\.00$/)">
+                <label for="search-case" class="sr-only">Case-insensitive</label>
+                <input type="checkbox" id="search-case" title="Case-insensitive (i)"> <span class="sr-only">Case-insensitive</span>
+                <button type="button" id="clear-search" aria-label="Clear search"></button>
+            </div>
+            <div id="search-error" class="error-message" aria-live="polite"></div>
+            
+            <div class="table-container">
+                <table id="transactions-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="date" class="sortable">
+                                Date <span class="sort-indicator">↕</span>
+                            </th>
+                            <th data-sort="description" class="sortable">
+                                Description <span class="sort-indicator">↕</span>
+                            </th>
+                            <th data-sort="amount" class="sortable">
+                                Amount <span class="sort-indicator">↕</span>
+                            </th>
+                            <th data-sort="category" class="sortable">
+                                Category <span class="sort-indicator">↕</span>
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions-body"></tbody>
+                </table>
+            </div>
+            
+            <div id="empty-state" class="empty-state" hidden>
+                <p>No transactions found. Add your first transaction above!</p>
+            </div>
+        </section>
+
+
+        <section id="settings-section" class="page-section" aria-labelledby="settings-heading">
+            <h2 id="settings-heading">Settings</h2>
+            
+            <div class="settings-grid">
+
+                <div class="setting-group">
+                    <h3>Currency Settings</h3>
+                    
+                    <div class="currency-inputs">
+                        <div>
+                            <label for="base-currency">Base Currency:</label>
+                            <select id="base-currency">
+                                <option value="EUR">US Dollar ($)</option>
+                                <option value="USD">Euro (€)</option>
+                                <option value="GBP">British Pound (£)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="exchange-rate-usd">EUR to Base Rate:</label>
+                            <input type="number" id="exchange-rate-usd" step="0.0001" value="1.0">
+                        </div>
+                        
+                        <div>
+                            <label for="exchange-rate-gbp">GBP to Base Rate:</label>
+                            <input type="number" id="exchange-rate-gbp" step="0.0001" value="1.0">
+                        </div>
+                    </div>
+                    
+                    <button id="save-currency">Save Currency Settings</button>
+                </div>
+                
+
+                <div class="setting-group">
+                    <h3>Data Management</h3>
+                    
+                    <div class="data-actions">
+                        <button id="export-data" class="btn-secondary">Export Data as JSON</button>
+                        <button id="import-data" class="btn-secondary">Import Data from JSON</button>
+                        <button id="clear-data" class="btn-danger">Clear All Data</button>
+                    </div>
+                    
+                    <div id="import-status" class="form-status" aria-live="polite"></div>
+                    
+                    <input type="file" id="import-file" accept=".json" hidden>
+                </div>
+                
+                <div class="setting-group" id="shortcuts-doc">
+                    <h3>Keyboard Navigation</h3>
+                    <p>Use these keyboard shortcuts to move around the application quickly:</p>
+                    <ul>
+                        <li><kbd>/</kbd> Focus search box</li>
+                        <li><kbd>N</kbd> Open Add Transaction form</li>
+                        <li><kbd>T</kbd> Go to Transactions page</li>
+                        <li><kbd>D</kbd> Go to Dashboard</li>
+                        <li><kbd>Tab</kbd> Move focus through interactive elements</li>
+                        <li><kbd>Ctrl</kbd> + <kbd>S</kbd> Save the Add Transaction form when the form is open</li>
+                        <li><kbd>?</kbd> Open Settings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Brian Nakuwa</p>
+    </footer>
+
+    <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

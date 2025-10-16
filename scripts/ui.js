@@ -222,7 +222,7 @@ export function bindUI() {
 				if (Array.isArray(parsed)) {
 					State.clearAll();
 					parsed.forEach(p=>State.addRecord(p));
-					$('#import-status').textContent = 'Imported successfully';
+					$('#import-status').textContent = 'Imported successfully✅';
 				} else if (parsed.records) {
 					State.clearAll();
 					parsed.records.forEach(p=>State.addRecord(p));

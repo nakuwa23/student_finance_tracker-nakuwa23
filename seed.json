@@ -29,7 +29,7 @@
   
     {
       "id": "txn_0004",
-      "description": "Junk: fries and two chicken wings",
+      "description": "Junk food: fries and two chicken wings",
       "amount": 4.5,
       "category": "Food",
       "date": "2025-10-15",

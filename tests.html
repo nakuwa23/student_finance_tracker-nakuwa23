@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Finance Tracker App Tests</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  body {font-family:sans-serif,Segoe UI,Roboto,Arial;margin:1rem}pre{background-color:#f8f8f8;padding:1rem}
+  </style>
+</head>
+<body>
+  <h1>Quick Tests</h1>
+  <pre id="results">Running...</pre>
+  <script type="module">
+    import * as V from './scripts/validators.js';
+    import { compileRegex } from './scripts/search.js';
+
+    const out = [];
+    function assert(cond, msg){ out.push((cond? 'PASS: ' : 'FAIL: ') + msg); }
+
+    assert(V.validateDescription('Junk: fries and chicken wings').valid, 'description simple');
+    assert(!V.validateDescription(' Leading').valid, 'description leading space');
+    assert(V.validateAmount('12.50').valid, 'amount valid 2 decimals');
+    assert(!V.validateAmount('12.345').valid, 'amount invalid too many decimals');
+    assert(V.validateDate('2025-10-15').valid, 'date valid');
+    assert(!V.validateDate('2025-13-01').valid, 'date invalid month');
+    assert(V.validateCategory('Fees').valid, 'category with space');
+
+    assert(compileRegex('/coffee/i') instanceof RegExp, 'compile /coffee/i');
+    assert(compileRegex('\\.00$') instanceof RegExp, 'compile \\.00$');
+    assert(compileRegex('[') === null, 'invalid regex returns null');
+
+    import('./scripts/storage.js').then(Storage=>{
+        const good = JSON.stringify([{ id:'a', description:'x', amount:1, category:'Food', date:'2025-10-10' }]);
+        const bad = JSON.stringify({ foo: 'bar' });
+        assert(Storage.importJSON(good).ok, 'importJSON accepts array of records');
+        assert(!Storage.importJSON(bad).ok, 'importJSON rejects wrong shape');
+        document.getElementById('results').textContent = out.join('\n');
+    });
+    
+  </script>
+</body>
+</html>

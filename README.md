@@ -168,14 +168,8 @@ Status messages use `aria-live` regions for screen reader announcements.
 
 ## Contact Information
 
-**Email**
+**Email**: [b.nakuwa@alustudent.com](b.nakuwa@alustudent.com)
 
-b.nakuwa@alustudent.com
+**GitHub**: [github.com/nakuwa23](https://github.com/nakuwa23)
 
-**GitHub**
-
-github.com/nakuwa23
-
-**Institution**
-
-African Leadership University
+**Institution**: African Leadership University

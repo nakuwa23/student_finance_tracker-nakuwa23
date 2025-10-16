@@ -1,6 +1,6 @@
 # Student Finance Tracker
 
-A beginner-friendly, accessible finance tracker for students built with vanilla HTML, CSS, and ES modules.
+A beginner-friendly, accessible finance tracker web application for students built with vanilla HTML, CSS, and ES modules.
 
 This README summarizes how to run the app, the main features, available keyboard shortcuts, theming behavior, and basic troubleshooting tips.
 

@@ -128,15 +128,15 @@ Purpose: Ensures no leading or trailing spaces.
 
 **Amount Validation**
 
-Pattern: `^(0|[1-9]\d*)(\.\d{1,2})?$`
+Pattern: `/^(0|[1-9]\d*)(\.\d{1,2})?$/`
 
 Purpose: Validates integer or decimal with up to 2 places.
 
 **Date Validation**
 
-Pattern: `^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$`
+Pattern: `/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/`
 
-Purpose: Validates YYYY-MM-DD format.
+Purpose: Validates the date format.
 
 **Category Validation**
 

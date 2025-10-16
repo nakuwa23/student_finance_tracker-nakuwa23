@@ -265,3 +265,237 @@ mark {
 @media (min-width: 768px) {
     .mobile-card { display: none; }
 }
+
+
+#dashboard-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #ecf0f1;
+    border-radius: 8px;
+    border-left: solid 8px #2c3e50;
+    border-right: solid 8px #2c3e50
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.stat-card {
+    background: #e8e8e8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-number {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.budget-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #e8e8e8;
+    border-radius: 8px;
+}
+
+.budget-input {
+    display: grid;
+    grid-template-columns: auto minmax(60px, 1fr) auto;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.budget-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+.budget-input {
+    display: grid;
+    grid-template-columns: auto minmax(90px, 1fr) auto;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.budget-input label {
+    margin: 0;
+    padding-right: 0.25rem;
+    white-space: nowrap;
+}
+
+.budget-input input {
+    min-width: 60px;
+    width: 100%;
+}
+
+#set-budget {
+    padding: 0.5rem 1rem;
+}
+
+@media (max-width: 1024px) {
+    .budget-input { grid-template-columns: auto minmax(50px, 1fr) auto; }
+}
+
+.chart-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #e1e1e1;
+    border-radius: 8px;
+}
+
+.budget-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.budget-balance {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.budget-balance.positive { color: #2e7d32; }
+.budget-balance.negative { color: #c62828; }
+
+.trend-chart {
+    display: flex;
+    align-items: end;
+    gap: 0.5rem;
+    height: 150px;
+    margin-top: 1rem;
+}
+
+.chart-bar {
+    flex: 1;
+    background: #3498db;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    transition: height 0.3s ease;
+}
+
+.chart-bar:hover {
+    background: #2980b9;
+}
+
+.chart-label {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+@media (max-width: 767px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .budget-input {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    #set-budget {
+        width: 100%;
+    }
+}
+
+
+#settings-section {
+    margin: 3rem 0;
+}
+
+.settings-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.setting-group {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: solid 8px #2c3e50;
+    border-right: solid 8px #2c3e50;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.setting-group h3 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+#shortcuts-doc kbd {
+    background: #222;
+    color: #fff;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+#shortcuts-doc ul { margin-left: 1rem; }
+
+.currency-inputs {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.data-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    width: auto;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-danger {
+    background: #dc3545;
+    width: auto;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+@media (max-width: 767px) {
+    .data-actions {
+        flex-direction: column;
+    }
+    
+    .data-actions button {
+        width: 100%;
+    }
+}

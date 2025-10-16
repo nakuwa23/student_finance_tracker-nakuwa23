@@ -7,6 +7,7 @@ This README summarizes how to run the app, the main features, available keyboard
 ## Website and Demo Video Links
 
 **Website**: https://nakuwa23.github.io/student_finance_tracker-nakuwa23/
+
 **Youtube**: https://youtu.be/xJXktUqGt9E
 
 ## Quick Start (Run Locally)

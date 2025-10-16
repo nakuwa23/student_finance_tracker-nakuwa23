@@ -4,6 +4,9 @@ A beginner-friendly, accessible finance tracker web application for students bui
 
 This README summarizes how to run the app, the main features, available keyboard shortcuts, theming behavior, and basic troubleshooting tips.
 
+## Website and Demo Video Links
+
+**Website**: https://nakuwa23.github.io/student_finance_tracker-nakuwa23/
 ## Quick Start (Run Locally)
 
 The app uses ES module imports and must be served over HTTP. From the project root run one of the following in PowerShell:

@@ -78,13 +78,13 @@ The theme button in the header toggles dark mode by adding or removing the `dark
 
 The toggle displays a moon icon when light mode is active and a sun icon when dark mode is active. The button uses `aria-pressed` for accessibility.
 
-If the theme doesn't appear to change visually, make sure you are serving the app over HTTP (see Quick Start section) and that `styles/main.css` includes the `html.dark` overrides (it does by default in this repo).
+If the theme doesn't appear to change visually, make sure you are serving the app over HTTP and that `styles/style.css` includes the `html.dark` overrides.
 
 ## Keyboard Shortcuts
 
 The following keyboard shortcuts are available throughout the application:
 
-**Navigation Shortcuts**
+**Keyboard Navigation**
 
 Press `/` to focus the search input.
 
@@ -98,11 +98,9 @@ Press `?` to open the settings page.
 
 Press `tab` to move focus through interactive elements.
 
-**Form Shortcuts**
+Press `ctrl + s` to save the Add Transaction form when the form is open.
 
-Press `Ctrl/Cmd + S` to save the Add Transaction form when focused inside it.
-
-Refer to the Settings page inside the app for a short reference of these shortcuts.
+Press `enter` to submit forms and activate buttons.
 
 ## Troubleshooting
 
@@ -155,14 +153,6 @@ Purpose: Validates category names with optional spaces or hyphens.
 Pattern: `/\b(\w+)\s+\1\b/`
 
 Purpose: Detects duplicate words.
-
-## Keyboard Navigation Map
-
-Tab navigates through header, search, add form, and table elements in sequence.
-
-Enter submits forms and activates buttons.
-
-Escape closes modals (if implemented).
 
 ## Accessibility Notes
 
